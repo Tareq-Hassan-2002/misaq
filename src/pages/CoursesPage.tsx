@@ -1,56 +1,77 @@
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import Button from '../components/ui/Button/Button'
-import Card from '../components/ui/Card/Card'
+import CourseCard from '../components/course/CourseCard'
 import MainLayout from '../layouts/MainLayout'
 import { universities } from '../data/academicData'
+import { courses } from '../data/courseData'
 import type { StudentAcademicSelection } from '../types'
 import './CoursesPage.css'
 
 const CoursesPage = () => {
   const location = useLocation()
+  const navigate = useNavigate()
   const selection = location.state?.selection as StudentAcademicSelection | undefined
 
+  if (!selection) {
+    return (
+      <MainLayout>
+        <section className="courses-page">
+          <div className="container">
+            <div className="courses-page__placeholder">
+              <p>لم يتم اختيار مسارك الدراسي بعد. يرجى إعداد بيانات الطالب لعرض المواد المناسبة لك.</p>
+              <Link to="/setup">
+                <Button variant="primary">إعداد مسارك</Button>
+              </Link>
+            </div>
+          </div>
+        </section>
+      </MainLayout>
+    )
+  }
+
   const selectedUniversity = universities.find(
-    (university) => university.id === selection?.universityId,
+    (university) => university.id === selection.universityId,
   )
   const selectedFaculty = selectedUniversity?.faculties.find(
-    (faculty) => faculty.id === selection?.facultyId,
+    (faculty) => faculty.id === selection.facultyId,
   )
 
-  const hasSelection = Boolean(
-    selection &&
-      selection.universityId &&
-      selection.facultyId &&
-      selection.year &&
-      selection.semester,
+  const filteredCourses = courses.filter(
+    (course) =>
+      course.universityId === selection.universityId &&
+      course.facultyId === selection.facultyId &&
+      course.year === selection.year &&
+      course.semester ===
+        (selection.semester === 'الفصل الأول' ? 'first' : 'second'),
   )
 
   return (
     <MainLayout>
       <section className="courses-page">
         <div className="container">
-          {hasSelection ? (
-            <Card className="courses-page__card" padding="lg">
-              <div className="section-heading">
-                <p className="section-kicker">موادك</p>
-                <h2>{selectedFaculty?.name ?? 'موادك'}</h2>
-              </div>
+          <div className="section-heading courses-page__header">
+            <p className="section-kicker">موادك هذا الفصل</p>
+            <h2>{selectedFaculty?.name ?? 'موادك'}</h2>
+            <p className="courses-page__path">
+              {selectedUniversity?.name} · {selection.year} · {selection.semester}
+            </p>
+          </div>
 
-              <div className="courses-page__meta">
-                <span>{selectedUniversity?.name}</span>
-                <span>·</span>
-                <span>{selection?.year}</span>
-                <span>·</span>
-                <span>{selection?.semester}</span>
-              </div>
-
-              <p>هذه الصفحة تم تجهيزها مؤقتًا لعرض مسار الطالب المختار. ستظهر هنا المواد المقترحة لاحقًا داخل تجربة أكثر اكتمالًا.</p>
-            </Card>
+          {filteredCourses.length > 0 ? (
+            <div className="courses-page__grid">
+              {filteredCourses.map((course) => (
+                <CourseCard
+                  key={course.id}
+                  course={course}
+                  onOpen={(courseId) => navigate(`/course/${courseId}`)}
+                />
+              ))}
+            </div>
           ) : (
             <div className="courses-page__placeholder">
-              <p>لم يتم اختيار مسارك الدراسي بعد. يرجى إعداد بيانات الطالب لعرض المواد المناسبة لك.</p>
+              <p>لا توجد مواد متاحة لهذا المسار حاليًا.</p>
               <Link to="/setup">
-                <Button variant="primary">إعداد مسارك</Button>
+                <Button variant="secondary">تعديل المسار</Button>
               </Link>
             </div>
           )}
