@@ -1,0 +1,36 @@
+import type { LectureBlock } from '../../types'
+import TitleBlock from './blocks/TitleBlock'
+import ParagraphBlock from './blocks/ParagraphBlock'
+import PriorityBlock from './blocks/PriorityBlock'
+import NoteBlock from './blocks/NoteBlock'
+import ExampleBlock from './blocks/ExampleBlock'
+import './LectureRenderer.css'
+
+interface LectureRendererProps {
+  blocks: LectureBlock[]
+}
+
+const LectureRenderer = ({ blocks }: LectureRendererProps) => {
+  return (
+    <div className="lecture-renderer">
+      {blocks.map((block) => {
+        switch (block.type) {
+          case 'title':
+            return <TitleBlock key={block.id} block={block} />
+          case 'paragraph':
+            return <ParagraphBlock key={block.id} block={block} />
+          case 'priority':
+            return <PriorityBlock key={block.id} block={block} />
+          case 'note':
+            return <NoteBlock key={block.id} block={block} />
+          case 'example':
+            return <ExampleBlock key={block.id} block={block} />
+          default:
+            return null
+        }
+      })}
+    </div>
+  )
+}
+
+export default LectureRenderer

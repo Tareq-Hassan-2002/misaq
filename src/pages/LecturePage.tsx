@@ -2,6 +2,7 @@ import { Link, useParams } from 'react-router-dom'
 import Badge from '../components/ui/Badge/Badge'
 import Button from '../components/ui/Button/Button'
 import Card from '../components/ui/Card/Card'
+import LectureRenderer from '../components/lecture/LectureRenderer'
 import MainLayout from '../layouts/MainLayout'
 import { lectures } from '../data/lectureData'
 
@@ -44,10 +45,7 @@ const LecturePage = () => {
 
             <p className="lecture-detail__description">{lecture.description}</p>
 
-            <div className="lecture-detail__placeholder">
-              <h3>محتوى المحاضرة</h3>
-              <p>سيتم بناء محتوى المحاضرة هنا.</p>
-            </div>
+            <LectureRenderer blocks={lecture.blocks ?? []} />
 
             <Link to={`/course/${lecture.courseId}`}>
               <Button variant="secondary">العودة إلى المادة</Button>
