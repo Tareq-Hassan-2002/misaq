@@ -1,0 +1,32 @@
+.ui-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+.ui-card--padding-none {
+  padding: 0;
+}
+
+.ui-card--padding-sm {
+  padding: var(--space-sm);
+}
+
+.ui-card--padding-md {
+  padding: var(--space-md);
+}
+
+.ui-card--padding-lg {
+  padding: var(--space-lg);
+}
+
+.ui-card--hoverable {
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.ui-card--hoverable:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
