@@ -23,7 +23,7 @@ const steps = [
 
 const HowItWorks = () => {
   return (
-    <section className="landing-how-it-works">
+    <section id="how-it-works" className="landing-how-it-works">
       <div className="container">
         <div className="section-heading">
           <p className="section-kicker">كيف تعمل؟</p>

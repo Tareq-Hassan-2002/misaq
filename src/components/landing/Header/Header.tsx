@@ -1,7 +1,10 @@
+import { useNavigate } from 'react-router-dom'
 import Button from '../../ui/Button/Button'
 import './Header.css'
 
 const Header = () => {
+  const navigate = useNavigate()
+
   return (
     <header className="landing-header">
       <div className="container landing-header__inner">
@@ -16,7 +19,9 @@ const Header = () => {
         </nav>
 
         <div className="landing-header__actions">
-          <Button variant="primary">ابدأ الآن</Button>
+          <Button variant="primary" onClick={() => navigate('/setup')}>
+            ابدأ الآن
+          </Button>
         </div>
       </div>
     </header>

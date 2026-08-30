@@ -5,7 +5,7 @@ const questions = ['ماذا أدرس؟', 'ما المهم؟', 'ماذا أحف�
 
 const Problem = () => {
   return (
-    <section className="landing-problem">
+    <section id="about" className="landing-problem">
       <div className="container">
         <div className="section-heading">
           <p className="section-kicker">المشكلة</p>
