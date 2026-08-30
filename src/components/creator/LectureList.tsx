@@ -13,7 +13,7 @@ const LectureList = ({ lectures, courseId }: LectureListProps) => {
     <section className="creator-lecture-list">
       <div className="creator-lecture-list__header">
         <h2>المحاضرات</h2>
-        <Link to={`/creator/course/${courseId}/lecture/${lectures[0]?.id ?? 'new-lecture'}`}>
+        <Link to={`/creator/course/${courseId}/lecture/${lectures[0]?.id ?? 'new-lecture'}/builder`}>
           <Button variant="primary">إضافة محاضرة</Button>
         </Link>
       </div>

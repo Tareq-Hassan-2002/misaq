@@ -1,4 +1,5 @@
 import type { ContentBlock } from '../../../creator/types'
+import BlockMediaEditor from '../BlockMediaEditor'
 
 interface DefinitionEditorProps {
   block: ContentBlock
@@ -19,6 +20,8 @@ const DefinitionEditor = ({ block, onChange }: DefinitionEditorProps) => {
         value={block.definition?.content ?? ''}
         onChange={(event) => onChange({ ...block, definition: { ...(block.definition ?? { title: '', content: '' }), content: event.target.value } })}
       />
+
+      <BlockMediaEditor block={block} onChange={onChange} />
     </div>
   )
 }

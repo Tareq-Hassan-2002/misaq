@@ -1,4 +1,5 @@
 import type { ContentBlock } from '../../../creator/types'
+import BlockMediaEditor from '../BlockMediaEditor'
 
 interface KeyConceptEditorProps {
   block: ContentBlock
@@ -29,6 +30,8 @@ const KeyConceptEditor = ({ block, onChange }: KeyConceptEditorProps) => {
           })
         }
       />
+
+      <BlockMediaEditor block={block} onChange={onChange} />
     </div>
   )
 }

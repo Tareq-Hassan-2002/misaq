@@ -11,7 +11,9 @@ import KeyConceptBlock from './blocks/KeyConceptBlock'
 import ComparisonBlock from './blocks/ComparisonBlock'
 import FocusBlock from './blocks/FocusBlock'
 import ReflectionBlock from './blocks/ReflectionBlock'
+import MediaViewer from './MediaViewer'
 import './LectureRenderer.css'
+import './MediaViewer.css'
 
 interface LectureRendererProps {
   blocks: LectureBlock[]
@@ -21,34 +23,43 @@ const LectureRenderer = ({ blocks }: LectureRendererProps) => {
   return (
     <div className="lecture-renderer">
       {blocks.map((block) => {
-        switch (block.type) {
-          case 'title':
-            return <TitleBlock key={block.id} block={block} />
-          case 'paragraph':
-            return <ParagraphBlock key={block.id} block={block} />
-          case 'priority':
-            return <PriorityBlock key={block.id} block={block} />
-          case 'note':
-            return <NoteBlock key={block.id} block={block} />
-          case 'example':
-            return <ExampleBlock key={block.id} block={block} />
-          case 'prerequisite':
-            return <PrerequisiteBlock key={block.id} block={block} />
-          case 'exercise':
-            return <ExerciseBlock key={block.id} block={block} />
-          case 'definition':
-            return <DefinitionBlock key={block.id} block={block} />
-          case 'keyConcept':
-            return <KeyConceptBlock key={block.id} block={block} />
-          case 'comparison':
-            return <ComparisonBlock key={block.id} block={block} />
-          case 'focus':
-            return <FocusBlock key={block.id} block={block} />
-          case 'reflection':
-            return <ReflectionBlock key={block.id} block={block} />
-          default:
-            return null
-        }
+        const content = (() => {
+          switch (block.type) {
+            case 'title':
+              return <TitleBlock key={block.id} block={block} />
+            case 'paragraph':
+              return <ParagraphBlock key={block.id} block={block} />
+            case 'priority':
+              return <PriorityBlock key={block.id} block={block} />
+            case 'note':
+              return <NoteBlock key={block.id} block={block} />
+            case 'example':
+              return <ExampleBlock key={block.id} block={block} />
+            case 'prerequisite':
+              return <PrerequisiteBlock key={block.id} block={block} />
+            case 'exercise':
+              return <ExerciseBlock key={block.id} block={block} />
+            case 'definition':
+              return <DefinitionBlock key={block.id} block={block} />
+            case 'keyConcept':
+              return <KeyConceptBlock key={block.id} block={block} />
+            case 'comparison':
+              return <ComparisonBlock key={block.id} block={block} />
+            case 'focus':
+              return <FocusBlock key={block.id} block={block} />
+            case 'reflection':
+              return <ReflectionBlock key={block.id} block={block} />
+            default:
+              return null
+          }
+        })()
+
+        return (
+          <div key={block.id}>
+            {content}
+            {block.media && block.media.length > 0 ? <MediaViewer media={block.media} /> : null}
+          </div>
+        )
       })}
     </div>
   )

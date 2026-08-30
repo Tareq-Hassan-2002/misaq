@@ -27,7 +27,7 @@ const CreatorLectureCard = ({ lecture, courseId }: CreatorLectureCardProps) => {
 
       <div className="creator-lecture-card__footer">
         <span>{lecture.blocks.length} bloques</span>
-        <Link to={`/creator/course/${courseId}/lecture/${lecture.id}`}>
+        <Link to={`/creator/course/${courseId}/lecture/${lecture.id}/builder`}>
           <Button variant="secondary">إدارة</Button>
         </Link>
       </div>

@@ -18,6 +18,16 @@ export type ContentBlockType =
 
 export type CreatorPriorityLevel = 'essential' | 'memorize' | 'understand'
 
+export type MediaType = 'video' | 'image'
+
+export interface MediaItem {
+  id: string
+  type: MediaType
+  url: string
+  title: string
+  description: string
+}
+
 export interface ExercisePayload {
   question: string
   hints: string[]
@@ -69,6 +79,7 @@ export interface ContentBlock {
   comparison?: ComparisonPayload
   focus?: FocusPayload
   reflection?: ReflectionPayload
+  media?: MediaItem[]
 }
 
 export interface CreatorLecture {

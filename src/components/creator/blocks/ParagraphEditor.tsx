@@ -1,4 +1,5 @@
 import type { ContentBlock } from '../../../creator/types'
+import BlockMediaEditor from '../BlockMediaEditor'
 
 interface ParagraphEditorProps {
   block: ContentBlock
@@ -13,6 +14,8 @@ const ParagraphEditor = ({ block, onChange }: ParagraphEditorProps) => {
         value={block.content ?? ''}
         onChange={(event) => onChange({ ...block, content: event.target.value })}
       />
+
+      <BlockMediaEditor block={block} onChange={onChange} />
     </div>
   )
 }

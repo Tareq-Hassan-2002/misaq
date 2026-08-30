@@ -1,4 +1,5 @@
 import type { ContentBlock } from '../../../creator/types'
+import BlockMediaEditor from '../BlockMediaEditor'
 
 interface TitleEditorProps {
   block: ContentBlock
@@ -13,6 +14,8 @@ const TitleEditor = ({ block, onChange }: TitleEditorProps) => {
         value={block.title ?? ''}
         onChange={(event) => onChange({ ...block, title: event.target.value })}
       />
+
+      <BlockMediaEditor block={block} onChange={onChange} />
     </div>
   )
 }

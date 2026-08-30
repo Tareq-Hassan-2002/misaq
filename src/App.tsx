@@ -23,6 +23,7 @@ function App() {
       <Route path="/dashboard" element={<DashboardPage />} />
       <Route path="/creator" element={<CreatorDashboardPage />} />
       <Route path="/creator/course/:courseId" element={<CreatorCoursePage />} />
+      <Route path="/creator/course/:courseId/lecture/:lectureId/builder" element={<CreatorLectureBuilderPage />} />
       <Route path="/creator/course/:courseId/lecture/:lectureId" element={<CreatorLectureBuilderPage />} />
       <Route path="/creator/preview/lecture/:lectureId" element={<CreatorPreviewLecturePage />} />
       <Route path="/404" element={<NotFoundPage />} />

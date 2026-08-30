@@ -71,6 +71,16 @@ export type LectureBlockType =
   | 'focus'
   | 'reflection'
 
+export type MediaType = 'video' | 'image'
+
+export interface MediaItem {
+  id: string
+  type: MediaType
+  url: string
+  title: string
+  description: string
+}
+
 export type PriorityLevel = 'essential' | 'memorize' | 'understand'
 
 export interface ExerciseData {
@@ -122,6 +132,7 @@ export interface LectureBlock {
   comparison?: ComparisonData
   focus?: FocusBlockData
   reflection?: ReflectionBlockData
+  media?: MediaItem[]
 }
 
 export interface Lecture {
