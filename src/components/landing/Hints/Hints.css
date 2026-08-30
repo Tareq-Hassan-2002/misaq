@@ -1,0 +1,41 @@
+.landing-hints {
+  padding: var(--space-4xl) 0;
+  background: var(--color-background);
+}
+
+.landing-hints__flow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.hint-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.hint-step__card {
+  min-width: min(100%, 16rem);
+  text-align: center;
+  background: var(--color-surface);
+  border-color: var(--color-border);
+}
+
+.hint-step__card span {
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-primary);
+}
+
+.hint-step__arrow {
+  color: var(--color-text-muted);
+  font-size: 1.2rem;
+}
+
+@media (max-width: 600px) {
+  .hint-step__card {
+    min-width: 100%;
+  }
+}

@@ -1,0 +1,43 @@
+.landing-method {
+  padding: var(--space-4xl) 0;
+  background: var(--color-background);
+}
+
+.landing-method__flow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.method-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.method-step__card {
+  min-width: min(100%, 17rem);
+  text-align: center;
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.method-step__card span {
+  display: block;
+  font-size: var(--font-size-body-large);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-primary);
+}
+
+.method-step__arrow {
+  font-size: 1.4rem;
+  color: var(--color-text-muted);
+}
+
+@media (max-width: 600px) {
+  .method-step__card {
+    min-width: 100%;
+  }
+}
