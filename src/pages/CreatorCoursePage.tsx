@@ -33,7 +33,7 @@ const CreatorCoursePage = () => {
       <section className="page-shell creator-course-page">
         <div className="container creator-course-page__container">
           <CourseHeader course={course} />
-          <LectureList lectures={course.lectures} />
+          <LectureList lectures={course.lectures} courseId={course.id} />
 
           <div className="creator-course-page__actions">
             <Link to="/creator">

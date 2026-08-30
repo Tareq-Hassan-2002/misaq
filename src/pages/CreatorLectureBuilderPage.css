@@ -1,0 +1,146 @@
+.creator-lecture-builder {
+  padding-top: clamp(var(--space-2xl), 5vw, var(--space-4xl));
+}
+
+.creator-lecture-builder__layout {
+  display: grid;
+  grid-template-columns: 330px minmax(0, 1.2fr) minmax(260px, 0.9fr);
+  gap: var(--space-xl);
+  align-items: start;
+}
+
+.creator-lecture-builder__sidebar,
+.creator-lecture-builder__editor-panel,
+.creator-lecture-builder__preview {
+  display: grid;
+  gap: var(--space-lg);
+}
+
+.creator-lecture-builder__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.creator-lecture-builder__header h1 {
+  margin: 0;
+  font-size: var(--font-size-h2);
+}
+
+.creator-lecture-builder__field {
+  display: grid;
+  gap: var(--space-xs);
+}
+
+.creator-lecture-builder__field label,
+.creator-block-editor label {
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-semibold);
+}
+
+.creator-lecture-builder__field input,
+.creator-lecture-builder__field textarea,
+.creator-lecture-builder__field select,
+.creator-block-editor input,
+.creator-block-editor textarea,
+.creator-block-editor select {
+  width: 100%;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  color: var(--color-text-primary);
+  padding: 0.75rem 0.875rem;
+  font: inherit;
+}
+
+.creator-lecture-builder__field textarea,
+.creator-block-editor textarea {
+  min-height: 7rem;
+  resize: vertical;
+}
+
+.creator-lecture-builder__actions,
+.creator-lecture-builder__add-blocks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+.creator-lecture-builder__add-blocks {
+  flex-direction: column;
+}
+
+.creator-lecture-builder__add-blocks h3 {
+  margin: 0;
+}
+
+.creator-block-item,
+.creator-empty-state {
+  background: var(--color-surface);
+}
+
+.creator-block-item__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-body-small);
+  font-weight: var(--font-weight-semibold);
+}
+
+.creator-block-item__controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.creator-block-item__controls button,
+.creator-block-editor__row button,
+.creator-block-editor button {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface-elevated);
+  color: var(--color-text-primary);
+  padding: 0.5rem 0.75rem;
+  font: inherit;
+  cursor: pointer;
+}
+
+.creator-block-editor {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.creator-block-editor__list {
+  display: grid;
+  gap: var(--space-sm);
+}
+
+.creator-block-editor__row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--space-sm);
+}
+
+.creator-lecture-builder__preview {
+  position: sticky;
+  top: 1.5rem;
+}
+
+.creator-lecture-builder__preview h2 {
+  margin: 0;
+}
+
+@media (max-width: 1100px) {
+  .creator-lecture-builder__layout {
+    grid-template-columns: 1fr;
+  }
+
+  .creator-lecture-builder__preview {
+    position: static;
+  }
+}

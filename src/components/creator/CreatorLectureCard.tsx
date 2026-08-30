@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import Button from '../ui/Button/Button'
 import Card from '../ui/Card/Card'
 import Badge from '../ui/Badge/Badge'
@@ -5,9 +6,10 @@ import type { CreatorLecture } from '../../creator/types'
 
 interface CreatorLectureCardProps {
   lecture: CreatorLecture
+  courseId: string
 }
 
-const CreatorLectureCard = ({ lecture }: CreatorLectureCardProps) => {
+const CreatorLectureCard = ({ lecture, courseId }: CreatorLectureCardProps) => {
   return (
     <Card className="creator-lecture-card" padding="lg" hoverable>
       <div className="creator-lecture-card__header">
@@ -25,7 +27,9 @@ const CreatorLectureCard = ({ lecture }: CreatorLectureCardProps) => {
 
       <div className="creator-lecture-card__footer">
         <span>{lecture.blocks.length} bloques</span>
-        <Button variant="secondary">إدارة</Button>
+        <Link to={`/creator/course/${courseId}/lecture/${lecture.id}`}>
+          <Button variant="secondary">إدارة</Button>
+        </Link>
       </div>
     </Card>
   )
