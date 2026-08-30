@@ -6,6 +6,9 @@ import NoteBlock from './blocks/NoteBlock'
 import ExampleBlock from './blocks/ExampleBlock'
 import PrerequisiteBlock from './blocks/PrerequisiteBlock'
 import ExerciseBlock from './blocks/ExerciseBlock'
+import DefinitionBlock from './blocks/DefinitionBlock'
+import KeyConceptBlock from './blocks/KeyConceptBlock'
+import ComparisonBlock from './blocks/ComparisonBlock'
 import './LectureRenderer.css'
 
 interface LectureRendererProps {
@@ -31,6 +34,12 @@ const LectureRenderer = ({ blocks }: LectureRendererProps) => {
             return <PrerequisiteBlock key={block.id} block={block} />
           case 'exercise':
             return <ExerciseBlock key={block.id} block={block} />
+          case 'definition':
+            return <DefinitionBlock key={block.id} block={block} />
+          case 'keyConcept':
+            return <KeyConceptBlock key={block.id} block={block} />
+          case 'comparison':
+            return <ComparisonBlock key={block.id} block={block} />
           default:
             return null
         }

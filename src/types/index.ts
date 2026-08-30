@@ -57,7 +57,17 @@ export interface Course {
 
 export type LectureStatus = 'draft' | 'published'
 
-export type LectureBlockType = 'title' | 'paragraph' | 'priority' | 'note' | 'example' | 'prerequisite' | 'exercise'
+export type LectureBlockType =
+  | 'title'
+  | 'paragraph'
+  | 'priority'
+  | 'note'
+  | 'example'
+  | 'prerequisite'
+  | 'exercise'
+  | 'definition'
+  | 'keyConcept'
+  | 'comparison'
 
 export type PriorityLevel = 'essential' | 'memorize' | 'understand'
 
@@ -67,6 +77,28 @@ export interface ExerciseData {
   solution: string
 }
 
+export interface DefinitionData {
+  title: string
+  content: string
+}
+
+export interface KeyConceptData {
+  title: string
+  explanation: string
+}
+
+export interface ComparisonItem {
+  left: string
+  right: string
+}
+
+export interface ComparisonData {
+  title: string
+  leftTitle: string
+  rightTitle: string
+  items: ComparisonItem[]
+}
+
 export interface LectureBlock {
   id: string
   type: LectureBlockType
@@ -74,6 +106,9 @@ export interface LectureBlock {
   level?: PriorityLevel
   items?: string[]
   exercise?: ExerciseData
+  definition?: DefinitionData
+  keyConcept?: KeyConceptData
+  comparison?: ComparisonData
 }
 
 export interface Lecture {

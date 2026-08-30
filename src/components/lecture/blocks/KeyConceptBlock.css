@@ -1,0 +1,15 @@
+.lecture-block--key-concept {
+  background: var(--color-primary-soft);
+  border-color: var(--color-border);
+}
+
+.lecture-block--key-concept h3 {
+  margin: 0 0 var(--space-sm);
+  color: var(--color-primary);
+}
+
+.lecture-block--key-concept p {
+  margin: 0;
+  color: var(--color-text-primary);
+  line-height: var(--line-height-relaxed);
+}

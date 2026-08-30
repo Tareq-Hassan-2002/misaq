@@ -62,6 +62,47 @@ export const lectures: Lecture[] = [
           solution: 'Application → Presentation → Session → Transport → Network → Data Link → Physical',
         },
       },
+      {
+        id: 'lecture-2-definition',
+        type: 'definition',
+        definition: {
+          title: 'تعريف نموذج OSI',
+          content:
+            'نموذج OSI هو إطار نظري يشرح كيفية انتقال البيانات عبر الشبكة من خلال سبع طبقات مترابطة.',
+        },
+      },
+      {
+        id: 'lecture-2-key-concept',
+        type: 'keyConcept',
+        keyConcept: {
+          title: 'الفكرة الأساسية',
+          explanation:
+            'كل طبقة من طبقات النموذج لها مسؤولية محددة، وهذا يساعد في تنظيم التواصل وتقليل التعقيد.',
+        },
+      },
+      {
+        id: 'lecture-2-comparison',
+        type: 'comparison',
+        comparison: {
+          title: 'OSI مقابل TCP/IP',
+          leftTitle: 'OSI',
+          rightTitle: 'TCP/IP',
+          items: [
+            {
+              left: 'سبع طبقات',
+              right: 'أربع طبقات',
+            },
+            {
+              left: 'نظري أكثر من العملي',
+              right: 'مستخدم فعليًا في الشبكات',
+            },
+            {
+              left: 'يُستخدم للتعليم والتحليل',
+              right: 'يُستخدم في التنفيذ العملي',
+            },
+          ],
+        },
+      },
     ],
   },
   {

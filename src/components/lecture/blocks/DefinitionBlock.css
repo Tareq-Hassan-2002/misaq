@@ -1,0 +1,14 @@
+.lecture-block--definition {
+  background: var(--color-surface-elevated);
+}
+
+.lecture-block--definition h3 {
+  margin: 0 0 var(--space-sm);
+  color: var(--color-text-primary);
+}
+
+.lecture-block--definition p {
+  margin: 0;
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+}
