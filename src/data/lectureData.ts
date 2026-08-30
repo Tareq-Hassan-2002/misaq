@@ -50,6 +50,18 @@ export const lectures: Lecture[] = [
         content: 'تحتاج قبل هذه المحاضرة',
         items: ['أساسيات الشبكات', 'مفاهيم الاتصال بين الأجهزة', 'مقدمة إلى البروتوكولات'],
       },
+      {
+        id: 'lecture-2-exercise',
+        type: 'exercise',
+        exercise: {
+          question: 'رتب طبقات نموذج OSI من الأعلى إلى الأسفل',
+          hints: [
+            'فكر بالطبقة التي يتعامل معها المستخدم أولًا',
+            'الطبقة الفيزيائية هي آخر طبقة',
+          ],
+          solution: 'Application → Presentation → Session → Transport → Network → Data Link → Physical',
+        },
+      },
     ],
   },
   {
