@@ -4,6 +4,7 @@ import ParagraphBlock from './blocks/ParagraphBlock'
 import PriorityBlock from './blocks/PriorityBlock'
 import NoteBlock from './blocks/NoteBlock'
 import ExampleBlock from './blocks/ExampleBlock'
+import PrerequisiteBlock from './blocks/PrerequisiteBlock'
 import './LectureRenderer.css'
 
 interface LectureRendererProps {
@@ -25,6 +26,8 @@ const LectureRenderer = ({ blocks }: LectureRendererProps) => {
             return <NoteBlock key={block.id} block={block} />
           case 'example':
             return <ExampleBlock key={block.id} block={block} />
+          case 'prerequisite':
+            return <PrerequisiteBlock key={block.id} block={block} />
           default:
             return null
         }

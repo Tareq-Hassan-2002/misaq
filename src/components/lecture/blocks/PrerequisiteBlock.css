@@ -1,0 +1,14 @@
+.lecture-block--prerequisite {
+  background: var(--color-surface-elevated);
+}
+
+.lecture-block__list {
+  margin: 0;
+  padding-right: 1.25rem;
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+}
+
+.lecture-block__list li + li {
+  margin-top: var(--space-sm);
+}

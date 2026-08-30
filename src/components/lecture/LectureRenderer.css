@@ -20,7 +20,8 @@
 
 .lecture-block--paragraph p,
 .lecture-block--note p,
-.lecture-block--example p {
+.lecture-block--example p,
+.lecture-block--priority p {
   margin: 0;
   color: var(--color-text-secondary);
   line-height: var(--line-height-relaxed);
@@ -28,7 +29,7 @@
 
 .lecture-block--priority {
   background: var(--color-primary-soft);
-  border-color: rgba(21, 61, 102, 0.12);
+  border-color: var(--color-border);
 }
 
 .lecture-block__header {

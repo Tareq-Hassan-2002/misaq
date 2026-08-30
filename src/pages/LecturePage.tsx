@@ -1,7 +1,7 @@
 import { Link, useParams } from 'react-router-dom'
-import Badge from '../components/ui/Badge/Badge'
 import Button from '../components/ui/Button/Button'
-import Card from '../components/ui/Card/Card'
+import LectureHeader from '../components/lecture/LectureHeader'
+import LectureNavigation from '../components/lecture/LectureNavigation'
 import LectureRenderer from '../components/lecture/LectureRenderer'
 import MainLayout from '../layouts/MainLayout'
 import { lectures } from '../data/lectureData'
@@ -31,26 +31,15 @@ const LecturePage = () => {
     <MainLayout>
       <section className="page-shell">
         <div className="container">
-          <Card padding="lg" className="lecture-detail">
-            <div className="section-heading">
-              <p className="section-kicker">المحاضرة {lecture.order}</p>
-              <h1>{lecture.title}</h1>
-            </div>
+          <LectureHeader lecture={lecture} />
 
-            <div className="lecture-detail__meta">
-              <Badge variant={lecture.status === 'published' ? 'success' : 'warning'}>
-                {lecture.status === 'published' ? 'منشورة' : 'مسودة'}
-              </Badge>
-            </div>
+          <LectureRenderer blocks={lecture.blocks ?? []} />
 
-            <p className="lecture-detail__description">{lecture.description}</p>
+          <LectureNavigation currentLectureId={lecture.id} />
 
-            <LectureRenderer blocks={lecture.blocks ?? []} />
-
-            <Link to={`/course/${lecture.courseId}`}>
-              <Button variant="secondary">العودة إلى المادة</Button>
-            </Link>
-          </Card>
+          <Link to={`/course/${lecture.courseId}`}>
+            <Button variant="secondary">العودة إلى المادة</Button>
+          </Link>
         </div>
       </section>
     </MainLayout>

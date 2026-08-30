@@ -57,7 +57,7 @@ export interface Course {
 
 export type LectureStatus = 'draft' | 'published'
 
-export type LectureBlockType = 'title' | 'paragraph' | 'priority' | 'note' | 'example'
+export type LectureBlockType = 'title' | 'paragraph' | 'priority' | 'note' | 'example' | 'prerequisite'
 
 export type PriorityLevel = 'essential' | 'memorize' | 'understand'
 
@@ -66,6 +66,7 @@ export interface LectureBlock {
   type: LectureBlockType
   content: string
   level?: PriorityLevel
+  items?: string[]
 }
 
 export interface Lecture {

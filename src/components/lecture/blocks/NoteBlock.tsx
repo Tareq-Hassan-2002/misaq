@@ -1,3 +1,4 @@
+import Card from '../../ui/Card/Card'
 import type { LectureBlock } from '../../../types'
 
 interface NoteBlockProps {
@@ -6,12 +7,12 @@ interface NoteBlockProps {
 
 const NoteBlock = ({ block }: NoteBlockProps) => {
   return (
-    <section className="lecture-block lecture-block--note">
+    <Card className="lecture-block lecture-block--note" padding="lg">
       <div className="lecture-block__header">
         <span className="lecture-block__label">ملاحظة</span>
       </div>
       <p>{block.content}</p>
-    </section>
+    </Card>
   )
 }
 
