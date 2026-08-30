@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import Button from '../ui/Button/Button'
 import { lectures } from '../../data/lectureData'
+import { isLectureCompleted } from '../../utils/learningStorage'
 import './LectureNavigation.css'
 
 interface LectureNavigationProps {
@@ -18,7 +19,8 @@ const LectureNavigation = ({ currentLectureId }: LectureNavigationProps) => {
     <nav className="lecture-navigation" aria-label="تنقل بين المحاضرات">
       {previousLecture ? (
         <Button variant="secondary" onClick={() => navigate(`/lecture/${previousLecture.id}`)}>
-          المحاضرة السابقة
+          {isLectureCompleted(previousLecture.id) ? '✓ ' : ''}
+          {previousLecture.title}
         </Button>
       ) : (
         <span className="lecture-navigation__placeholder">لا توجد محاضرة سابقة</span>
@@ -26,7 +28,8 @@ const LectureNavigation = ({ currentLectureId }: LectureNavigationProps) => {
 
       {nextLecture ? (
         <Button variant="primary" onClick={() => navigate(`/lecture/${nextLecture.id}`)}>
-          المحاضرة التالية
+          {isLectureCompleted(nextLecture.id) ? '✓ ' : ''}
+          {nextLecture.title}
         </Button>
       ) : (
         <span className="lecture-navigation__placeholder">لا توجد محاضرة تالية</span>

@@ -2,13 +2,13 @@ import ProgressBar from '../ui/ProgressBar/ProgressBar'
 import './LectureProgress.css'
 
 interface LectureProgressProps {
-  currentLecture: number
+  completedLectures: number
   totalLectures: number
 }
 
-const LectureProgress = ({ currentLecture, totalLectures }: LectureProgressProps) => {
+const LectureProgress = ({ completedLectures, totalLectures }: LectureProgressProps) => {
   const safeTotal = totalLectures > 0 ? totalLectures : 1
-  const safeCurrent = Math.min(Math.max(currentLecture, 1), safeTotal)
+  const safeCurrent = Math.min(Math.max(completedLectures, 0), safeTotal)
   const percentage = (safeCurrent / safeTotal) * 100
 
   return (
@@ -16,7 +16,7 @@ const LectureProgress = ({ currentLecture, totalLectures }: LectureProgressProps
       <div className="lecture-progress__meta">
         <span>تقدم المحاضرة</span>
         <strong>
-          {safeCurrent}/{safeTotal}
+          {safeCurrent} من {safeTotal} محاضرات مكتملة
         </strong>
       </div>
 
