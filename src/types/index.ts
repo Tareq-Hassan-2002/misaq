@@ -68,6 +68,8 @@ export type LectureBlockType =
   | 'definition'
   | 'keyConcept'
   | 'comparison'
+  | 'focus'
+  | 'reflection'
 
 export type PriorityLevel = 'essential' | 'memorize' | 'understand'
 
@@ -99,6 +101,15 @@ export interface ComparisonData {
   items: ComparisonItem[]
 }
 
+export interface FocusBlockData {
+  title: string
+  content: string
+}
+
+export interface ReflectionBlockData {
+  question: string
+}
+
 export interface LectureBlock {
   id: string
   type: LectureBlockType
@@ -109,6 +120,8 @@ export interface LectureBlock {
   definition?: DefinitionData
   keyConcept?: KeyConceptData
   comparison?: ComparisonData
+  focus?: FocusBlockData
+  reflection?: ReflectionBlockData
 }
 
 export interface Lecture {

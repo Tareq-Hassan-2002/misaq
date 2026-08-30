@@ -103,6 +103,21 @@ export const lectures: Lecture[] = [
           ],
         },
       },
+      {
+        id: 'lecture-2-focus',
+        type: 'focus',
+        focus: {
+          title: 'ركز على هذه الفكرة',
+          content: 'نموذج OSI ليس بروتوكولًا بل نموذج لفهم الاتصال بين الأجهزة ضمن الشبكة.',
+        },
+      },
+      {
+        id: 'lecture-2-reflection',
+        type: 'reflection',
+        reflection: {
+          question: 'لماذا نحتاج إلى تقسيم الشبكات إلى طبقات؟',
+        },
+      },
     ],
   },
   {

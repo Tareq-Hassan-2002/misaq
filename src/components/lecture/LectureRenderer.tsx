@@ -9,6 +9,8 @@ import ExerciseBlock from './blocks/ExerciseBlock'
 import DefinitionBlock from './blocks/DefinitionBlock'
 import KeyConceptBlock from './blocks/KeyConceptBlock'
 import ComparisonBlock from './blocks/ComparisonBlock'
+import FocusBlock from './blocks/FocusBlock'
+import ReflectionBlock from './blocks/ReflectionBlock'
 import './LectureRenderer.css'
 
 interface LectureRendererProps {
@@ -40,6 +42,10 @@ const LectureRenderer = ({ blocks }: LectureRendererProps) => {
             return <KeyConceptBlock key={block.id} block={block} />
           case 'comparison':
             return <ComparisonBlock key={block.id} block={block} />
+          case 'focus':
+            return <FocusBlock key={block.id} block={block} />
+          case 'reflection':
+            return <ReflectionBlock key={block.id} block={block} />
           default:
             return null
         }

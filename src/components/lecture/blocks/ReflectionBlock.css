@@ -1,0 +1,10 @@
+.lecture-block--reflection {
+  background: var(--color-surface-elevated);
+}
+
+.lecture-block__question {
+  margin: 0;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  line-height: var(--line-height-relaxed);
+}

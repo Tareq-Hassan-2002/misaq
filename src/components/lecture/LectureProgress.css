@@ -1,0 +1,30 @@
+.lecture-progress {
+  display: grid;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-xl);
+  padding: var(--space-lg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.lecture-progress__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-body-small);
+  font-weight: var(--font-weight-semibold);
+}
+
+.lecture-progress__meta strong {
+  color: var(--color-primary);
+}
+
+.lecture-progress__percent {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-body-small);
+  font-weight: var(--font-weight-semibold);
+}

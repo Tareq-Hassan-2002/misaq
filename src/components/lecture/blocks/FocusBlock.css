@@ -1,0 +1,12 @@
+.lecture-block--focus {
+  background: linear-gradient(135deg, var(--color-primary-soft), var(--color-surface));
+}
+
+.lecture-block--focus h3 {
+  margin: 0 0 var(--space-sm);
+}
+
+.lecture-block--focus p {
+  margin: 0;
+  line-height: var(--line-height-relaxed);
+}
