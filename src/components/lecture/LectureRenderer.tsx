@@ -57,7 +57,9 @@ const LectureRenderer = ({ blocks }: LectureRendererProps) => {
         return (
           <div key={block.id}>
             {content}
-            {block.media && block.media.length > 0 ? <MediaViewer media={block.media} /> : null}
+            {block.media && block.media.length > 0 ? (
+              <MediaViewer media={block.media} watermarkEnabled={true} allowDownload={false} />
+            ) : null}
           </div>
         )
       })}

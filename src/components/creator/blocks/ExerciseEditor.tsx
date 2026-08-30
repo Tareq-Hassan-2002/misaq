@@ -15,6 +15,7 @@ const ExerciseEditor = ({ block, onChange }: ExerciseEditorProps) => {
         question: block.exercise?.question ?? '',
         hints: block.exercise?.hints ?? [],
         solution: block.exercise?.solution ?? '',
+        explanation: block.exercise?.explanation ?? '',
         ...value,
       },
     })
@@ -61,6 +62,12 @@ const ExerciseEditor = ({ block, onChange }: ExerciseEditorProps) => {
       <textarea
         value={block.exercise?.solution ?? ''}
         onChange={(event) => updateExercise({ solution: event.target.value })}
+      />
+
+      <label>شرح الحل</label>
+      <textarea
+        value={block.exercise?.explanation ?? ''}
+        onChange={(event) => updateExercise({ explanation: event.target.value })}
       />
     </div>
   )

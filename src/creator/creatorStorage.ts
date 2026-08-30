@@ -11,6 +11,30 @@ export interface CreatorStorageEntry {
   data: CreatorLecture
 }
 
+export const saveCreatorLectureDraft = (lecture: CreatorLecture, courseId: string) => {
+  if (typeof window === 'undefined') {
+    return
+  }
+
+  saveCreatorDraft({
+    lectureId: lecture.id,
+    courseId,
+    data: { ...lecture, status: 'draft' },
+  })
+}
+
+export const saveCreatorLecturePublished = (lecture: CreatorLecture, courseId: string) => {
+  if (typeof window === 'undefined') {
+    return
+  }
+
+  saveCreatorPublished({
+    lectureId: lecture.id,
+    courseId,
+    data: { ...lecture, status: 'published' },
+  })
+}
+
 const safeParse = <T>(value: string | null): T | null => {
   if (!value) {
     return null

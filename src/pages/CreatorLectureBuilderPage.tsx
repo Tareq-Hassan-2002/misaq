@@ -4,7 +4,13 @@ import Button from '../components/ui/Button/Button'
 import Card from '../components/ui/Card/Card'
 import LectureRenderer from '../components/lecture/LectureRenderer'
 import { creatorCourses } from '../creator/data'
-import { createEmptyBlock, loadCreatorLecture, saveCreatorDraft, saveCreatorPublished } from '../creator/creatorStorage'
+import {
+  createEmptyBlock,
+  loadCreatorLecture,
+  saveCreatorDraft,
+  saveCreatorLectureDraft,
+  saveCreatorLecturePublished,
+} from '../creator/creatorStorage'
 import type { ContentBlock, CreatorLecture, CreatorLectureStatus } from '../creator/types'
 import * as blockEditors from '../components/creator/blocks'
 import './CreatorLectureBuilderPage.css'
@@ -72,11 +78,7 @@ const CreatorLectureBuilderPage = () => {
       return
     }
 
-    saveCreatorDraft({
-      lectureId: lecture.id,
-      courseId,
-      data: lecture,
-    })
+    saveCreatorLectureDraft(lecture, courseId)
   }, [courseId, lecture, lectureId])
 
   const previewBlocks = useMemo(() => {
@@ -93,6 +95,7 @@ const CreatorLectureBuilderPage = () => {
       comparison: block.comparison,
       focus: block.focus,
       reflection: block.reflection,
+      media: block.media,
     }))
   }, [lecture.blocks])
 
@@ -144,30 +147,39 @@ const CreatorLectureBuilderPage = () => {
   const handleSave = () => {
     const nextLecture = { ...lecture, status: 'draft' as CreatorLectureStatus }
     setLecture(nextLecture)
-    saveCreatorDraft({
-      lectureId: nextLecture.id,
-      courseId: courseId ?? 'creator-net-402',
-      data: nextLecture,
-    })
+    saveCreatorLectureDraft(nextLecture, courseId ?? 'creator-net-402')
   }
 
   const handlePublish = () => {
     const nextLecture = { ...lecture, status: 'published' as CreatorLectureStatus }
     setLecture(nextLecture)
-    saveCreatorPublished({
+    saveCreatorLecturePublished(nextLecture, courseId ?? 'creator-net-402')
+  }
+
+  const handleReset = () => {
+    const fallback = baseLecture ?? {
+      id: lectureId ?? `lecture-${Date.now()}`,
+      courseId: courseId ?? 'creator-net-402',
+      title: 'محاضرة جديدة',
+      description: 'وصف المحاضرة',
+      order: 1,
+      status: 'draft',
+      blocks: [],
+    }
+
+    setLecture(fallback)
+    saveCreatorLectureDraft(fallback, courseId ?? 'creator-net-402')
+  }
+
+  const handlePreview = () => {
+    const nextLecture = { ...lecture, status: lecture.status }
+    setLecture(nextLecture)
+    saveCreatorDraft({
       lectureId: nextLecture.id,
       courseId: courseId ?? 'creator-net-402',
       data: nextLecture,
     })
-  }
-
-  const handlePreview = () => {
-    saveCreatorDraft({
-      lectureId: lecture.id,
-      courseId: courseId ?? 'creator-net-402',
-      data: lecture,
-    })
-    navigate(`/creator/preview/lecture/${lecture.id}`)
+    navigate(`/creator/preview/lecture/${nextLecture.id}`)
   }
 
   if (!courseId) {
@@ -198,15 +210,17 @@ const CreatorLectureBuilderPage = () => {
           <div className="creator-lecture-builder__field">
             <label>الحالة</label>
             <select value={lecture.status} onChange={(event) => setLecture({ ...lecture, status: event.target.value as CreatorLectureStatus })}>
-              <option value="draft">مسودة</option>
-              <option value="published">منشور</option>
+              <option value="draft">draft</option>
+              <option value="published">published</option>
+              <option value="archived">archived</option>
             </select>
           </div>
 
           <div className="creator-lecture-builder__actions">
-            <Button variant="primary" onClick={handleSave}>حفظ</Button>
+            <Button variant="primary" onClick={handleSave}>Save Draft</Button>
             <Button variant="secondary" onClick={handlePreview}>معاينة</Button>
-            <Button variant="primary" onClick={handlePublish}>نشر</Button>
+            <Button variant="primary" onClick={handlePublish}>Publish</Button>
+            <Button variant="secondary" onClick={handleReset}>Reset Changes</Button>
           </div>
 
           <div className="creator-lecture-builder__add-blocks">

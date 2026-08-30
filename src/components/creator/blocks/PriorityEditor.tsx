@@ -1,4 +1,5 @@
 import type { ContentBlock } from '../../../creator/types'
+import BlockMediaEditor from '../BlockMediaEditor'
 
 interface PriorityEditorProps {
   block: ContentBlock
@@ -23,6 +24,8 @@ const PriorityEditor = ({ block, onChange }: PriorityEditorProps) => {
         <option value="memorize">حفظ</option>
         <option value="understand">فهم</option>
       </select>
+
+      <BlockMediaEditor block={block} onChange={onChange} />
     </div>
   )
 }

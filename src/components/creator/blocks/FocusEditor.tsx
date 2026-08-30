@@ -1,4 +1,5 @@
 import type { ContentBlock } from '../../../creator/types'
+import BlockMediaEditor from '../BlockMediaEditor'
 
 interface FocusEditorProps {
   block: ContentBlock
@@ -29,6 +30,8 @@ const FocusEditor = ({ block, onChange }: FocusEditorProps) => {
           })
         }
       />
+
+      <BlockMediaEditor block={block} onChange={onChange} />
     </div>
   )
 }

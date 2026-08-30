@@ -1,4 +1,5 @@
 import type { ContentBlock } from '../../../creator/types'
+import BlockMediaEditor from '../BlockMediaEditor'
 
 interface ComparisonEditorProps {
   block: ContentBlock
@@ -49,6 +50,8 @@ const ComparisonEditor = ({ block, onChange }: ComparisonEditorProps) => {
           })
         }
       />
+
+      <BlockMediaEditor block={block} onChange={onChange} />
     </div>
   )
 }

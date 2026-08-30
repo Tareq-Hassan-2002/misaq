@@ -1,6 +1,8 @@
-export type CreatorCourseStatus = 'draft' | 'published' | 'archived'
+export type ContentStatus = 'draft' | 'published' | 'archived'
 
-export type CreatorLectureStatus = 'draft' | 'published'
+export type CreatorCourseStatus = ContentStatus
+
+export type CreatorLectureStatus = ContentStatus
 
 export type ContentBlockType =
   | 'title'
@@ -32,6 +34,7 @@ export interface ExercisePayload {
   question: string
   hints: string[]
   solution: string
+  explanation?: string
 }
 
 export interface DefinitionPayload {

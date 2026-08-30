@@ -44,6 +44,7 @@ const CreatorPreviewLecturePage = () => {
             comparison: block.comparison,
             focus: block.focus,
             reflection: block.reflection,
+            media: block.media,
           }))} />
 
           <Link to={`/creator/course/${lecture.courseId}/lecture/${lecture.id}`}>

@@ -34,6 +34,13 @@ const ExerciseBlock = ({ block }: ExerciseBlockProps) => {
         <p>الحل:</p>
         <strong>{block.exercise.solution}</strong>
       </div>
+
+      {block.exercise.explanation ? (
+        <div className="lecture-block__exercise-explanation">
+          <p>شرح الحل:</p>
+          <span>{block.exercise.explanation}</span>
+        </div>
+      ) : null}
     </Card>
   )
 }

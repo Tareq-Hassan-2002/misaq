@@ -1,4 +1,5 @@
 import type { ContentBlock } from '../../../creator/types'
+import BlockMediaEditor from '../BlockMediaEditor'
 
 interface PrerequisiteEditorProps {
   block: ContentBlock
@@ -41,6 +42,8 @@ const PrerequisiteEditor = ({ block, onChange }: PrerequisiteEditorProps) => {
       <button type="button" onClick={() => updateItems([...items, 'عنصر جديد'])}>
         إضافة عنصر
       </button>
+
+      <BlockMediaEditor block={block} onChange={onChange} />
     </div>
   )
 }

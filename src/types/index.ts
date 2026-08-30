@@ -87,6 +87,7 @@ export interface ExerciseData {
   question: string
   hints: string[]
   solution: string
+  explanation?: string
 }
 
 export interface DefinitionData {

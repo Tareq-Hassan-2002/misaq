@@ -1,4 +1,5 @@
 import type { ContentBlock } from '../../../creator/types'
+import BlockMediaEditor from '../BlockMediaEditor'
 
 interface ReflectionEditorProps {
   block: ContentBlock
@@ -18,6 +19,8 @@ const ReflectionEditor = ({ block, onChange }: ReflectionEditorProps) => {
           })
         }
       />
+
+      <BlockMediaEditor block={block} onChange={onChange} />
     </div>
   )
 }
