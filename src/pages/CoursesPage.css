@@ -1,0 +1,29 @@
+.courses-page {
+  padding: clamp(var(--space-3xl), 6vw, var(--space-4xl)) 0;
+}
+
+.courses-page__card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  max-width: 46rem;
+}
+
+.courses-page__meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+.courses-page__placeholder {
+  padding: var(--space-xl);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.courses-page__placeholder p {
+  margin: 0 0 var(--space-lg);
+}
