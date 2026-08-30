@@ -6,6 +6,7 @@ import CoursePage from './pages/CoursePage'
 import LecturePage from './pages/LecturePage'
 import DashboardPage from './pages/DashboardPage'
 import CreatorDashboardPage from './pages/CreatorDashboardPage'
+import CreatorCoursePage from './pages/CreatorCoursePage'
 import NotFoundPage from './pages/NotFoundPage'
 import './App.css'
 
@@ -19,6 +20,7 @@ function App() {
       <Route path="/lecture/:lectureId" element={<LecturePage />} />
       <Route path="/dashboard" element={<DashboardPage />} />
       <Route path="/creator" element={<CreatorDashboardPage />} />
+      <Route path="/creator/course/:courseId" element={<CreatorCoursePage />} />
       <Route path="/404" element={<NotFoundPage />} />
       <Route path="*" element={<Navigate to="/404" replace />} />
     </Routes>

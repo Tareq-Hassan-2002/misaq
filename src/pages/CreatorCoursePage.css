@@ -1,0 +1,124 @@
+.creator-course-page {
+  padding-top: clamp(var(--space-2xl), 5vw, var(--space-4xl));
+}
+
+.creator-course-page__container {
+  display: grid;
+  gap: var(--space-2xl);
+}
+
+.creator-course-header {
+  display: grid;
+  gap: var(--space-md);
+  background: linear-gradient(135deg, var(--color-surface), var(--color-primary-soft));
+}
+
+.creator-course-header__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+.creator-course-header__code {
+  color: var(--color-primary);
+  font-size: var(--font-size-body-small);
+  font-weight: var(--font-weight-semibold);
+}
+
+.creator-course-header h1 {
+  margin: 0;
+  font-size: var(--font-size-h1);
+}
+
+.creator-course-header p {
+  margin: 0;
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+}
+
+.creator-course-header__stats {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-body-small);
+}
+
+.creator-lecture-list {
+  display: grid;
+  gap: var(--space-lg);
+}
+
+.creator-lecture-list__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.creator-lecture-list__header h2 {
+  margin: 0;
+  font-size: var(--font-size-h2);
+}
+
+.creator-lecture-list__items {
+  display: grid;
+  gap: var(--space-lg);
+}
+
+.creator-lecture-card {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.creator-lecture-card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-md);
+}
+
+.creator-lecture-card__order {
+  margin: 0 0 var(--space-xs);
+  color: var(--color-primary);
+  font-size: var(--font-size-body-small);
+  font-weight: var(--font-weight-semibold);
+}
+
+.creator-lecture-card__header h3 {
+  margin: 0;
+}
+
+.creator-lecture-card p {
+  margin: 0;
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+}
+
+.creator-lecture-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-body-small);
+}
+
+.creator-lecture-list__empty {
+  margin: 0;
+  padding: var(--space-lg);
+  border-radius: var(--radius-lg);
+  border: 1px dashed var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text-secondary);
+}
+
+.creator-course-page__actions {
+  display: flex;
+  justify-content: flex-start;
+}
