@@ -54,3 +54,14 @@ export interface Course {
   publishedLectureCount: number
   status: CourseStatus
 }
+
+export type LectureStatus = 'draft' | 'published'
+
+export interface Lecture {
+  id: string
+  courseId: string
+  title: string
+  description: string
+  order: number
+  status: LectureStatus
+}

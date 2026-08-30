@@ -1,0 +1,29 @@
+.lecture-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.lecture-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+}
+
+.lecture-card__number {
+  font-size: var(--font-size-body-small);
+  color: var(--color-text-secondary);
+  font-weight: 600;
+}
+
+.lecture-card h3 {
+  margin: 0;
+  font-size: var(--font-size-h4);
+}
+
+.lecture-card p {
+  margin: 0;
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+}

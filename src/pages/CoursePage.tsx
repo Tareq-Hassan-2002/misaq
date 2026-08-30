@@ -1,8 +1,10 @@
 import { Link, useParams } from 'react-router-dom'
 import Button from '../components/ui/Button/Button'
 import Card from '../components/ui/Card/Card'
+import LectureCard from '../components/lecture/LectureCard'
 import MainLayout from '../layouts/MainLayout'
 import { courses } from '../data/courseData'
+import { lectures } from '../data/lectureData'
 import './CoursePage.css'
 
 const CoursePage = () => {
@@ -26,6 +28,8 @@ const CoursePage = () => {
     )
   }
 
+  const courseLectures = lectures.filter((lecture) => lecture.courseId === course.id)
+
   return (
     <MainLayout>
       <section className="page-shell">
@@ -46,9 +50,18 @@ const CoursePage = () => {
               <span>{course.status === 'active' ? 'نشطة' : 'غير نشطة'}</span>
             </div>
 
-            <div className="course-detail__placeholder">
+            <div className="course-detail__section">
               <h3>محاضرات المادة</h3>
-              <p>سيتم إضافة المحاضرات في المرحلة التالية.</p>
+
+              {courseLectures.length > 0 ? (
+                <div className="course-detail__lecture-list">
+                  {courseLectures.map((lecture) => (
+                    <LectureCard key={lecture.id} lecture={lecture} />
+                  ))}
+                </div>
+              ) : (
+                <p className="course-detail__empty">لا توجد محاضرات متاحة لهذه المادة حاليًا.</p>
+              )}
             </div>
 
             <Link to="/courses">

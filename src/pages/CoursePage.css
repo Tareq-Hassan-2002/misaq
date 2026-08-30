@@ -22,6 +22,25 @@
   font-size: var(--font-size-body-small);
 }
 
+.course-detail__section {
+  margin-top: var(--space-xl);
+}
+
+.course-detail__section h3 {
+  margin: 0 0 var(--space-lg);
+}
+
+.course-detail__lecture-list {
+  display: grid;
+  gap: var(--space-lg);
+  margin-bottom: var(--space-xl);
+}
+
+.course-detail__empty {
+  margin: 0 0 var(--space-xl);
+  color: var(--color-text-secondary);
+}
+
 .course-detail__placeholder {
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
