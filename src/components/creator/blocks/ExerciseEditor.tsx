@@ -1,3 +1,4 @@
+import BlockMediaEditor from '../BlockMediaEditor'
 import type { ContentBlock } from '../../../creator/types'
 
 interface ExerciseEditorProps {
@@ -69,6 +70,8 @@ const ExerciseEditor = ({ block, onChange }: ExerciseEditorProps) => {
         value={block.exercise?.explanation ?? ''}
         onChange={(event) => updateExercise({ explanation: event.target.value })}
       />
+
+      <BlockMediaEditor block={block} onChange={onChange} />
     </div>
   )
 }

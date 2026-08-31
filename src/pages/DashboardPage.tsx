@@ -3,8 +3,7 @@ import Badge from '../components/ui/Badge/Badge'
 import Button from '../components/ui/Button/Button'
 import Card from '../components/ui/Card/Card'
 import ProgressBar from '../components/ui/ProgressBar/ProgressBar'
-import { courses } from '../data/courseData'
-import { lectures } from '../data/lectureData'
+import { getCourses, getLectures } from '../contentStorage'
 import { getCompletedLectures } from '../utils/learningStorage'
 import MainLayout from '../layouts/MainLayout'
 import './DashboardPage.css'
@@ -12,6 +11,8 @@ import './DashboardPage.css'
 const DashboardPage = () => {
   const navigate = useNavigate()
   const completedLectureIds = getCompletedLectures()
+  const courses = getCourses()
+  const lectures = getLectures()
 
   const courseSummaries = courses.map((course) => {
     const courseLectures = lectures.filter((lecture) => lecture.courseId === course.id)

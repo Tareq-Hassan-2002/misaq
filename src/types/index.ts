@@ -53,6 +53,8 @@ export interface Course {
   lectureCount: number
   publishedLectureCount: number
   status: CourseStatus
+  updatedAt?: string
+  lectures?: Lecture[]
 }
 
 export type LectureStatus = 'draft' | 'published'

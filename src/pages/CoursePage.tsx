@@ -3,14 +3,14 @@ import Button from '../components/ui/Button/Button'
 import Card from '../components/ui/Card/Card'
 import LectureCard from '../components/lecture/LectureCard'
 import MainLayout from '../layouts/MainLayout'
-import { courses } from '../data/courseData'
-import { lectures } from '../data/lectureData'
+import { getCourse, getLectures } from '../contentStorage'
 import './CoursePage.css'
 
 const CoursePage = () => {
   const { courseId } = useParams()
 
-  const course = courses.find((item) => item.id === courseId)
+  const course = courseId ? getCourse(courseId) : undefined
+  const courseLectures = courseId ? getLectures(courseId) : []
 
   if (!course) {
     return (
@@ -27,8 +27,6 @@ const CoursePage = () => {
       </MainLayout>
     )
   }
-
-  const courseLectures = lectures.filter((lecture) => lecture.courseId === course.id)
 
   return (
     <MainLayout>

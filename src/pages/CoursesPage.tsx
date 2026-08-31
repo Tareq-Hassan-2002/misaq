@@ -1,32 +1,27 @@
+import { useEffect } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import Button from '../components/ui/Button/Button'
 import CourseCard from '../components/course/CourseCard'
 import MainLayout from '../layouts/MainLayout'
 import { universities } from '../data/academicData'
-import { courses } from '../data/courseData'
+import { getCourses, getStudentSelection } from '../contentStorage'
 import type { StudentAcademicSelection } from '../types'
 import './CoursesPage.css'
 
 const CoursesPage = () => {
   const location = useLocation()
   const navigate = useNavigate()
-  const selection = location.state?.selection as StudentAcademicSelection | undefined
+  const selection = (location.state?.selection as StudentAcademicSelection | undefined) ?? getStudentSelection() ?? undefined
+  const courses = getCourses()
+
+  useEffect(() => {
+    if (!selection) {
+      navigate('/setup', { replace: true })
+    }
+  }, [selection, navigate])
 
   if (!selection) {
-    return (
-      <MainLayout>
-        <section className="courses-page">
-          <div className="container">
-            <div className="courses-page__placeholder">
-              <p>لم يتم اختيار مسارك الدراسي بعد. يرجى إعداد بيانات الطالب لعرض المواد المناسبة لك.</p>
-              <Link to="/setup">
-                <Button variant="primary">إعداد مسارك</Button>
-              </Link>
-            </div>
-          </div>
-        </section>
-      </MainLayout>
-    )
+    return null
   }
 
   const selectedUniversity = universities.find(

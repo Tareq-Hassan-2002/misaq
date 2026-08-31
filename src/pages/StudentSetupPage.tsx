@@ -5,6 +5,7 @@ import Select from '../components/ui/Select/Select'
 import Card from '../components/ui/Card/Card'
 import MainLayout from '../layouts/MainLayout'
 import { academicSemesters, academicYears, universities } from '../data/academicData'
+import { getStudentSelection, saveStudentSelection } from '../contentStorage'
 import type { StudentAcademicSelection } from '../types'
 import './StudentSetupPage.css'
 
@@ -17,7 +18,7 @@ const emptySelection: StudentAcademicSelection = {
 
 const StudentSetupPage = () => {
   const navigate = useNavigate()
-  const [selection, setSelection] = useState<StudentAcademicSelection>(emptySelection)
+  const [selection, setSelection] = useState<StudentAcademicSelection>(() => getStudentSelection() ?? emptySelection)
 
   const selectedUniversity = useMemo(
     () => universities.find((university) => university.id === selection.universityId),
@@ -73,6 +74,7 @@ const StudentSetupPage = () => {
       return
     }
 
+    saveStudentSelection(selection)
     navigate('/courses', { state: { selection } })
   }
 

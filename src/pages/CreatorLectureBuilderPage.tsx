@@ -3,7 +3,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 import Button from '../components/ui/Button/Button'
 import Card from '../components/ui/Card/Card'
 import LectureRenderer from '../components/lecture/LectureRenderer'
-import { creatorCourses } from '../creator/data'
+import { getCreatorCourse, upsertCreatorLecture, publishCreatorLecture } from '../creator/contentBridge'
 import {
   createEmptyBlock,
   loadCreatorLecture,
@@ -49,7 +49,7 @@ const CreatorLectureBuilderPage = () => {
   const { courseId, lectureId } = useParams()
   const navigate = useNavigate()
 
-  const baseCourse = creatorCourses.find((course) => course.id === courseId)
+  const baseCourse = courseId ? getCreatorCourse(courseId) : undefined
   const baseLecture = baseCourse?.lectures.find((lecture) => lecture.id === lectureId)
   const existingLecture = lectureId ? loadCreatorLecture(lectureId) : null
 
@@ -148,12 +148,18 @@ const CreatorLectureBuilderPage = () => {
     const nextLecture = { ...lecture, status: 'draft' as CreatorLectureStatus }
     setLecture(nextLecture)
     saveCreatorLectureDraft(nextLecture, courseId ?? 'creator-net-402')
+    if (courseId) {
+      upsertCreatorLecture(courseId, nextLecture)
+    }
   }
 
   const handlePublish = () => {
     const nextLecture = { ...lecture, status: 'published' as CreatorLectureStatus }
     setLecture(nextLecture)
     saveCreatorLecturePublished(nextLecture, courseId ?? 'creator-net-402')
+    if (courseId) {
+      publishCreatorLecture(courseId, nextLecture)
+    }
   }
 
   const handleReset = () => {

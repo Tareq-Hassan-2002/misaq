@@ -4,11 +4,11 @@ import Button from '../components/ui/Button/Button'
 import Card from '../components/ui/Card/Card'
 import Badge from '../components/ui/Badge/Badge'
 import MainLayout from '../layouts/MainLayout'
-import { creatorCourses as initialCreatorCourses } from '../creator/data'
+import { getCreatorCourses, saveCreatorCourses } from '../creator/contentBridge'
 import './CreatorDashboardPage.css'
 
 const CreatorDashboardPage = () => {
-  const [courses, setCourses] = useState(initialCreatorCourses)
+  const [courses, setCourses] = useState(() => getCreatorCourses())
   const navigate = useNavigate()
 
   const handleAddCourse = () => {
@@ -24,7 +24,9 @@ const CreatorDashboardPage = () => {
       lectures: [],
     }
 
-    setCourses((currentCourses) => [newCourse, ...currentCourses])
+    const nextCourses = [newCourse, ...courses]
+    setCourses(nextCourses)
+    saveCreatorCourses(nextCourses)
     navigate(`/creator/course/${newCourseId}`)
   }
 

@@ -1,8 +1,11 @@
+import { useNavigate } from 'react-router-dom'
 import Button from '../../ui/Button/Button'
 import Badge from '../../ui/Badge/Badge'
 import './Hero.css'
 
 const Hero = () => {
+  const navigate = useNavigate()
+
   return (
     <section className="landing-hero">
       <div className="container landing-hero__inner">
@@ -21,8 +24,8 @@ const Hero = () => {
           </p>
 
           <div className="landing-hero__actions">
-            <Button variant="primary">ابدأ رحلتك</Button>
-            <Button variant="ghost">كيف تعمل مساق؟</Button>
+            <Button variant="primary" onClick={() => navigate('/setup')}>ابدأ رحلتك</Button>
+            <Button variant="ghost" onClick={() => document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth' })}>كيف تعمل مساق؟</Button>
           </div>
         </div>
 

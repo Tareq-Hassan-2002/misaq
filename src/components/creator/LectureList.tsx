@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import Button from '../ui/Button/Button'
 import type { CreatorLecture } from '../../creator/types'
 import CreatorLectureCard from './CreatorLectureCard'
@@ -6,16 +5,17 @@ import CreatorLectureCard from './CreatorLectureCard'
 interface LectureListProps {
   lectures: CreatorLecture[]
   courseId: string
+  onAddLecture?: () => void
 }
 
-const LectureList = ({ lectures, courseId }: LectureListProps) => {
+const LectureList = ({ lectures, courseId, onAddLecture }: LectureListProps) => {
   return (
     <section className="creator-lecture-list">
       <div className="creator-lecture-list__header">
         <h2>المحاضرات</h2>
-        <Link to={`/creator/course/${courseId}/lecture/${lectures[0]?.id ?? 'new-lecture'}/builder`}>
-          <Button variant="primary">إضافة محاضرة</Button>
-        </Link>
+        <Button variant="primary" onClick={onAddLecture}>
+          إضافة محاضرة
+        </Button>
       </div>
 
       {lectures.length > 0 ? (

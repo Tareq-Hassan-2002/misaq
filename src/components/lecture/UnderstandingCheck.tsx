@@ -1,10 +1,27 @@
 import { useState } from 'react'
+import { useParams } from 'react-router-dom'
 import Button from '../ui/Button/Button'
 import Card from '../ui/Card/Card'
+import { isLectureUnderstood, markLectureAsUnderstood, clearLectureUnderstanding } from '../../utils/learningStorage'
 import './UnderstandingCheck.css'
 
 const UnderstandingCheck = () => {
-  const [isConfirmed, setIsConfirmed] = useState(false)
+  const { lectureId } = useParams()
+  const [isUnderstood, setIsUnderstood] = useState(() => (lectureId ? isLectureUnderstood(lectureId) : false))
+
+  const handleConfirmUnderstanding = () => {
+    if (lectureId) {
+      markLectureAsUnderstood(lectureId)
+      setIsUnderstood(true)
+    }
+  }
+
+  const handleNeedReview = () => {
+    if (lectureId) {
+      clearLectureUnderstanding(lectureId)
+      setIsUnderstood(false)
+    }
+  }
 
   return (
     <Card className="lecture-understanding-check" padding="lg">
@@ -13,16 +30,16 @@ const UnderstandingCheck = () => {
       </div>
 
       <div className="lecture-understanding-check__actions">
-        <Button variant={isConfirmed ? 'primary' : 'secondary'} onClick={() => setIsConfirmed(true)}>
+        <Button variant={isUnderstood ? 'primary' : 'secondary'} onClick={handleConfirmUnderstanding}>
           نعم، فهمت
         </Button>
 
-        <Button variant="outline" onClick={() => setIsConfirmed(false)}>
+        <Button variant="outline" onClick={handleNeedReview}>
           أحتاج إلى مراجعة
         </Button>
       </div>
 
-      {isConfirmed && <p className="lecture-understanding-check__feedback">رائع! يمكنك المتابعة إلى المحاضرة التالية.</p>}
+      {isUnderstood && <p className="lecture-understanding-check__feedback">رائع! يمكنك المتابعة إلى المحاضرة التالية.</p>}
     </Card>
   )
 }

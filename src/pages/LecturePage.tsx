@@ -8,14 +8,15 @@ import LectureCompletion from '../components/lecture/LectureCompletion'
 import UnderstandingCheck from '../components/lecture/UnderstandingCheck'
 import LectureRenderer from '../components/lecture/LectureRenderer'
 import MainLayout from '../layouts/MainLayout'
-import { lectures } from '../data/lectureData'
+import { getLecture, getLectures } from '../contentStorage'
 import { getCompletedLectures } from '../utils/learningStorage'
 
 const LecturePage = () => {
   const { lectureId } = useParams()
   const [, setCompletionTick] = useState(0)
 
-  const lecture = lectures.find((item) => item.id === lectureId)
+  const lecture = lectureId ? getLecture(lectureId) : undefined
+  const allCourseLectures = lecture ? getLectures(lecture.courseId) : []
 
   if (!lecture) {
     return (
@@ -33,14 +34,13 @@ const LecturePage = () => {
     )
   }
 
-  const courseLectures = lectures.filter((item) => item.courseId === lecture?.courseId)
-  const completedCount = courseLectures.filter((item) => getCompletedLectures().includes(item.id)).length
+  const completedCount = allCourseLectures.filter((item) => getCompletedLectures().includes(item.id)).length
 
   return (
     <MainLayout>
       <section className="page-shell">
         <div className="container">
-          <LectureProgress completedLectures={completedCount} totalLectures={courseLectures.length} />
+          <LectureProgress completedLectures={completedCount} totalLectures={allCourseLectures.length} />
 
           <LectureHeader lecture={lecture} />
 
