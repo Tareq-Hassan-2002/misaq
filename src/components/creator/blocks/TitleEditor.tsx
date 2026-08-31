@@ -11,8 +11,8 @@ const TitleEditor = ({ block, onChange }: TitleEditorProps) => {
     <div className="creator-block-editor">
       <label>عنوان</label>
       <input
-        value={block.title ?? ''}
-        onChange={(event) => onChange({ ...block, title: event.target.value })}
+        value={block.content ?? ''}
+        onChange={(event) => onChange({ ...block, content: event.target.value })}
       />
 
       <BlockMediaEditor block={block} onChange={onChange} />
