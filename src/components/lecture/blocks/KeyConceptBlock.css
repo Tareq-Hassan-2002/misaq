@@ -6,10 +6,16 @@
 .lecture-block--key-concept h3 {
   margin: 0 0 var(--space-sm);
   color: var(--color-primary);
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  min-width: 0;
 }
 
 .lecture-block--key-concept p {
   margin: 0;
   color: var(--color-text-primary);
   line-height: var(--line-height-relaxed);
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  min-width: 0;
 }

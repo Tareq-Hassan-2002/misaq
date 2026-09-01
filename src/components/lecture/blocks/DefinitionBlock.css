@@ -5,10 +5,16 @@
 .lecture-block--definition h3 {
   margin: 0 0 var(--space-sm);
   color: var(--color-text-primary);
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  min-width: 0;
 }
 
 .lecture-block--definition p {
   margin: 0;
   color: var(--color-text-secondary);
   line-height: var(--line-height-relaxed);
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  min-width: 0;
 }

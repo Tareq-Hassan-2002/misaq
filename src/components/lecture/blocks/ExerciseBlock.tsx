@@ -38,7 +38,7 @@ const ExerciseBlock = ({ block }: ExerciseBlockProps) => {
       {hints.length > 0 && (
         <div className="lecture-block__exercise-hints">
           <div className="lecture-block__exercise-hints-buttons">
-            {hints.map((hint, index) => (
+            {hints.map((_, index) => (
               <button
                 key={index}
                 className="lecture-block__hint-button"

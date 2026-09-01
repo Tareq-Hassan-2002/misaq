@@ -106,7 +106,7 @@ export const createEmptyBlock = (type: ContentBlock['type']): ContentBlock => {
 
   switch (type) {
     case 'title':
-      return { ...base, title: 'عنوان جديد' }
+      return { ...base, content: 'عنوان جديد' }
     case 'paragraph':
       return { ...base, content: 'نص جديد' }
     case 'note':

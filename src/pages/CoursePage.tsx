@@ -10,7 +10,12 @@ const CoursePage = () => {
   const { courseId } = useParams()
 
   const course = courseId ? getCourse(courseId) : undefined
-  const courseLectures = courseId ? getLectures(courseId) : []
+  const allCourseLectures = courseId ? getLectures(courseId) : []
+
+  // Filter only published lectures and sort by order
+  const courseLectures = allCourseLectures
+    .filter((lecture) => lecture.status === 'published')
+    .sort((a, b) => (a.order ?? 999) - (b.order ?? 999))
 
   if (!course) {
     return (

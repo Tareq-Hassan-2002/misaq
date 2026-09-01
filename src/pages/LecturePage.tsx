@@ -16,9 +16,9 @@ const LecturePage = () => {
   const [, setCompletionTick] = useState(0)
 
   const lecture = lectureId ? getLecture(lectureId) : undefined
-  const allCourseLectures = lecture ? getLectures(lecture.courseId) : []
+  const allCourseLectures = lecture ? getLectures(lecture.courseId).filter((lec) => lec.status === 'published') : []
 
-  if (!lecture) {
+  if (!lecture || lecture.status !== 'published') {
     return (
       <MainLayout>
         <section className="page-shell">

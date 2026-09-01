@@ -85,10 +85,52 @@ export const upsertCreatorLecture = (courseId: string, lecture: CreatorLecture) 
 }
 
 export const publishCreatorLecture = (courseId: string, lecture: CreatorLecture): void => {
+  // Adjust order for other lectures if needed
+  const nextCourses = getCreatorCourses().map((course) => {
+    if (course.id !== courseId) {
+      return course
+    }
+
+    // Get all published lectures and adjust their orders
+    const publishedLectures = course.lectures.filter((item) => item.status === 'published')
+    const otherLectures = course.lectures.filter((item) => item.id !== lecture.id && item.status !== 'published')
+
+    let nextLectures = publishedLectures
+    const adjustedLecture = lecture
+
+    // If this lecture has a new order and is being published, insert it at that order
+    if (lecture.status === 'published') {
+      // Remove existing lecture with same ID
+      nextLectures = publishedLectures.filter((item) => item.id !== lecture.id)
+
+      // Insert new lecture at correct order position
+      const insertIndex = lecture.order - 1
+      if (insertIndex >= 0 && insertIndex <= nextLectures.length) {
+        nextLectures.splice(insertIndex, 0, adjustedLecture)
+      } else {
+        nextLectures.push(adjustedLecture)
+      }
+
+      // Re-number all published lectures by their new position
+      nextLectures = nextLectures.map((lec, index) => ({
+        ...lec,
+        order: index + 1,
+      }))
+    }
+
+    return {
+      ...course,
+      lectures: [...nextLectures, ...otherLectures],
+      lectureCount: nextLectures.length + otherLectures.length,
+      updatedAt: new Date().toISOString().slice(0, 10),
+    }
+  })
+
+  saveCreatorCourses(nextCourses)
+
+  // Sync to student storage
   if (lecture.status === 'published') {
     const studentLecture = creatorLectureToStudentLecture(lecture)
     upsertStudentLecture(studentLecture)
   }
-
-  upsertCreatorLecture(courseId, lecture)
 }

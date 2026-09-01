@@ -4,9 +4,15 @@
 
 .lecture-block--focus h3 {
   margin: 0 0 var(--space-sm);
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  min-width: 0;
 }
 
 .lecture-block--focus p {
   margin: 0;
   line-height: var(--line-height-relaxed);
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  min-width: 0;
 }

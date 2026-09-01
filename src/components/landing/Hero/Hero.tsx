@@ -24,7 +24,7 @@ const Hero = () => {
           </p>
 
           <div className="landing-hero__actions">
-            <Button variant="primary" onClick={() => navigate('/setup')}>ابدأ رحلتك</Button>
+            <Button variant="primary" onClick={() => navigate('/login')}>ابدأ رحلتك</Button>
             <Button variant="ghost" onClick={() => document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth' })}>كيف تعمل مساق؟</Button>
           </div>
         </div>

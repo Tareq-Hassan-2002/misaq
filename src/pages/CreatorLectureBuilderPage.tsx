@@ -3,7 +3,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 import Button from '../components/ui/Button/Button'
 import Card from '../components/ui/Card/Card'
 import LectureRenderer from '../components/lecture/LectureRenderer'
-import { getCreatorCourse, upsertCreatorLecture, publishCreatorLecture } from '../creator/contentBridge'
+import { getCreatorCourse, getCreatorCourses, upsertCreatorLecture, publishCreatorLecture } from '../creator/contentBridge'
 import {
   createEmptyBlock,
   loadCreatorLecture,
@@ -206,6 +206,30 @@ const CreatorLectureBuilderPage = () => {
           <div className="creator-lecture-builder__field">
             <label>عنوان المحاضرة</label>
             <input value={lecture.title} onChange={(event) => setLecture({ ...lecture, title: event.target.value })} />
+          </div>
+
+          <div className="creator-lecture-builder__field">
+            <label>المادة</label>
+            <select
+              value={lecture.courseId}
+              onChange={(event) => setLecture({ ...lecture, courseId: event.target.value })}
+            >
+              {getCreatorCourses().map((course) => (
+                <option key={course.id} value={course.id}>
+                  {course.name} ({course.code})
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div className="creator-lecture-builder__field">
+            <label>رقم المحاضرة (الترتيب)</label>
+            <input
+              type="number"
+              min="1"
+              value={lecture.order}
+              onChange={(event) => setLecture({ ...lecture, order: parseInt(event.target.value, 10) || 1 })}
+            />
           </div>
 
           <div className="creator-lecture-builder__field">

@@ -7,6 +7,14 @@
   padding-right: 1.25rem;
   color: var(--color-text-secondary);
   line-height: var(--line-height-relaxed);
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.lecture-block__list li {
+  min-width: 0;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .lecture-block__list li + li {

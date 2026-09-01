@@ -7,4 +7,7 @@
   font-weight: var(--font-weight-semibold);
   color: var(--color-text-primary);
   line-height: var(--line-height-relaxed);
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  min-width: 0;
 }

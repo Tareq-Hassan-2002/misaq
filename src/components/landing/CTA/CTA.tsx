@@ -14,7 +14,7 @@ const CTA = () => {
             <h2>اختر تخصصك ودع مساق ترتب لك طريقك.</h2>
           </div>
 
-          <Button variant="primary" onClick={() => navigate('/setup')}>ابدأ رحلتك</Button>
+          <Button variant="primary" onClick={() => navigate('/login')}>ابدأ رحلتك</Button>
         </div>
       </div>
     </section>

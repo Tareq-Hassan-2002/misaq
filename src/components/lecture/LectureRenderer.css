@@ -10,12 +10,19 @@
   background: var(--color-surface);
   padding: var(--space-lg);
   box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  min-width: 0;
 }
 
 .lecture-block--title h3,
 .lecture-block--title h4 {
   margin: 0;
   color: var(--color-text-primary);
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  min-width: 0;
 }
 
 .lecture-block--paragraph p,
@@ -25,6 +32,9 @@
   margin: 0;
   color: var(--color-text-secondary);
   line-height: var(--line-height-relaxed);
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  min-width: 0;
 }
 
 .lecture-block--priority {
@@ -38,12 +48,16 @@
   justify-content: space-between;
   gap: var(--space-sm);
   margin-bottom: var(--space-sm);
+  min-width: 0;
 }
 
 .lecture-block__label {
   font-size: var(--font-size-body-small);
   color: var(--color-text-secondary);
   font-weight: var(--font-weight-semibold);
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  min-width: 0;
 }
 
 .lecture-block__priority {

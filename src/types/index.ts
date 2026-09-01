@@ -41,6 +41,16 @@ export interface Semester {
   label: string
 }
 
+export type UserRole = 'student' | 'admin'
+
+export interface User {
+  id: string
+  name: string
+  username?: string
+  studentNumber?: string
+  role: UserRole
+}
+
 export interface Course {
   id: string
   code: string

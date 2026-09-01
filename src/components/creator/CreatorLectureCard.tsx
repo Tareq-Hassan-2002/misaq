@@ -10,6 +10,28 @@ interface CreatorLectureCardProps {
 }
 
 const CreatorLectureCard = ({ lecture, courseId }: CreatorLectureCardProps) => {
+  const getStatusBadgeVariant = (status: string): 'default' | 'primary' | 'success' | 'warning' | 'error' | 'info' => {
+    switch (status) {
+      case 'published':
+        return 'success'
+      case 'archived':
+        return 'error'
+      default:
+        return 'warning'
+    }
+  }
+
+  const getStatusLabel = (status: string) => {
+    switch (status) {
+      case 'published':
+        return 'منشورة'
+      case 'archived':
+        return 'مؤرشفة'
+      default:
+        return 'مسودة'
+    }
+  }
+
   return (
     <Card className="creator-lecture-card" padding="lg" hoverable>
       <div className="creator-lecture-card__header">
@@ -18,8 +40,8 @@ const CreatorLectureCard = ({ lecture, courseId }: CreatorLectureCardProps) => {
           <h3>{lecture.title}</h3>
         </div>
 
-        <Badge variant={lecture.status === 'published' ? 'success' : 'warning'}>
-          {lecture.status === 'published' ? 'منشورة' : 'مسودة'}
+        <Badge variant={getStatusBadgeVariant(lecture.status)}>
+          {getStatusLabel(lecture.status)}
         </Badge>
       </div>
 
